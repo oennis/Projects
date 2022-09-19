@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Bootstrap & Javascript -->
+		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-
+J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+                <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-
+Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+integrity="sha384-
+Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-
+wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+		
+		<link rel="stylesheet" type="text/css" href="asg2.css">
+		
+		<!-- Functions -->
+		<script>
+			function doReset() {
+				window.location.reload();
+			}
+			
+			function doMove() {
+				var src = document.getElementById("src").value;
+				var dst = document.getElementById("dst").value;
+				let piece = document.getElementById(src).innerHTML
+				document.getElementById(dst).innerHTML = piece;
+				document.getElementById(src).innerHTML = " ";	
+			}
+		</script>
+	</head>
+	
+	<body>
+		<h1>CINS 465: Assignment 2 by Olivia Ennis</h1>
+		<table>
+			<tbody>
+				<tr>
+					<th>8</th>
+					<td id="a8"> &#9820; </td>
+					<td id="b8"> &#9822; </td>
+					<td id="c8"> &#9821; </td>
+					<td id="d8"> &#9819; </td>
+					<td id="e8"> &#9818; </td>
+					<td id="f8"> &#9821; </td>
+					<td id="g8"> &#9822; </td>
+					<td id="h8"> &#9820; </td>
+				</tr>
+				<tr>
+					<th>7</th>
+					<td id="a7"> &#9823; </td>
+					<td id="b7"> &#9823; </td>
+					<td id="c7"> &#9823; </td>
+					<td id="d7"> &#9823; </td>
+					<td id="e7"> &#9823; </td>
+					<td id="f7"> &#9823; </td>
+					<td id="g7"> &#9823; </td>
+					<td id="h7"> &#9823; </td>
+				</tr>
+				<tr>
+					<th>6</th>
+					<td id="a6"> &nbsp; </td>
+					<td id="b6"> &nbsp; </td>
+					<td id="c6"> &nbsp; </td>
+					<td id="d6"> &nbsp; </td>
+					<td id="e6"> &nbsp; </td>
+					<td id="f6"> &nbsp; </td>
+					<td id="g6"> &nbsp; </td>
+					<td id="h6"> &nbsp; </td>
+				</tr>
+				<tr>
+					<th>5</th>
+                        		<td id="a5"> &nbsp; </td>
+                        		<td id="b5"> &nbsp; </td>
+                        		<td id="c5"> &nbsp; </td>
+                        		<td id="d5"> &nbsp; </td>
+                        		<td id="e5"> &nbsp; </td>
+                        		<td id="f5"> &nbsp; </td>
+                        		<td id="g5"> &nbsp; </td>
+                        		<td id="h5"> &nbsp; </td>
+				</tr>
+				<tr>
+					<th>4</th>
+                        		<td id="a4"> &nbsp; </td>
+                        		<td id="b4"> &nbsp; </td>
+                        		<td id="c4"> &nbsp; </td>
+                        		<td id="d4"> &nbsp; </td>
+                        		<td id="e4"> &nbsp; </td>
+                        		<td id="f4"> &nbsp; </td>
+                        		<td id="g4"> &nbsp; </td>
+                        		<td id="h4"> &nbsp; </td>
+				</tr>
+				<tr>
+					<th>3</th>
+                        		<td id="a3"> &nbsp; </td>
+                        		<td id="b3"> &nbsp; </td>
+                        		<td id="c3"> &nbsp; </td>
+                        		<td id="d3"> &nbsp; </td>
+                        		<td id="e3"> &nbsp; </td>
+                        		<td id="f3"> &nbsp; </td>
+                        		<td id="g3"> &nbsp; </td>
+                        		<td id="h3"> &nbsp; </td>
+				</tr>
+				<tr>
+					<th>2</th>
+                        		<td id="a2"> &#9817; </td>
+                        		<td id="b2"> &#9817; </td>
+                        		<td id="c2"> &#9817; </td>
+                        		<td id="d2"> &#9817; </td>
+                        		<td id="e2"> &#9817; </td>
+                        		<td id="f2"> &#9817; </td>
+                        		<td id="g2"> &#9817; </td>
+                        		<td id="h2"> &#9817; </td>
+				</tr>
+				<tr>
+					<th>1</th>
+                        		<td id="a1"> &#9814; </td>
+                        		<td id="b1"> &#9816; </td>
+                        		<td id="c1"> &#9815; </td>
+                        		<td id="d1"> &#9813; </td>
+                        		<td id="e1"> &#9812; </td>
+                        		<td id="f1"> &#9815; </td>
+                        		<td id="g1"> &#9816; </td>
+                        		<td id="h1"> &#9814; </td>
+				</tr>
+				<tr>
+					<th></th>
+					<th>a</th>
+					<th>b</th>
+					<th>c</th>
+					<th>d</th>
+					<th>e</th>
+					<th>f</th>
+					<th>g</th>
+					<th>h</th>
+				</tr>
+			</tbody>
+		</table>
+		
+		<input class="form-control" id="src" type="text" placeholder="e2">
+		<input class="form-control" id="dst" type="text" placeholder="e4">
+		
+		<div>	
+			<button type="button" onclick="doMove()" class="btn btn-outline-primary">Move</button>
+			<button type="button" onclick="doReset()" class="btn btn-outline-warning">Reset</button>		
+		</div>
+
+		<hr>
+
+		<h4>The History of Chess</h4>
+		<p>	The game of Chess originated from the Indian game of chaturanga before 600 AD. However, it didn't begin to evolve into the game we know now until the mid 18th century. During that time French Master Francois-Andre Philidor published a book introducing theories of defense that are still used today. Chess continued to grow in popularity, then in the 19th century chess sets became standardized. Beyond this point the game of chess itself did not change, nevertheless, players approach to winning did. Early chess players had very attack heavy strategies, because defensive play styles hadn't been learned yet. That is until Wilhelm Steinitz who became the first world chess champion using his defensive style of play. Strategies continue to advance even now, current chess champions use computerized chess engines in order to improve their skills. </p>
+
+                <hr>
+
+		<h4>Chess Piece Rules</h4>
+		<ul>
+			<li>Pawns can move one square straight ahead</li>
+			<li>Rooks can move in their line or row</li>
+			<li>Knights can move two squares vertically and one square horizontally or vise versa</li>
+			<li>Bishops can move diagonally</li>
+			<li>The King can move from their square to a neighboring square</li>
+			<li>The Queen can move like a Rook or a Bishop</li>
+		</ul>
+
+                <hr>
+
+                <h4>About Me</h4>
+                <p>	Hello I'm Olivia Ennis and I'm 21 years old. I attend Chico State as a Computer Information Systems major. I enjoy playing video games, my favorite ones are Fire Emblem: Three Houses, Lego Harry Potter, and the Sims. I also like to watch tv shows and movies with my friends. My goals are to get a job once I graduate and to be happy and satisfied with life.</p>
+		<img src ="me.jpg" alt="Olivia Ennis">	
+			
+	</body>
+</html>

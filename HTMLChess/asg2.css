@@ -1,0 +1,49 @@
+body {
+	padding: 40px;
+}
+
+table {
+	background: tan;
+	margin: auto;
+	border: 1px solid black;
+}
+
+td {
+	background: tan;
+	width: 60px;
+	height: 60px;
+	border: 1px solid black;
+	font-size: 60px;
+	text-align: center;
+	font-family: monospace;
+}
+
+th {
+	background: tan;
+}
+
+tr {
+	text-align: center;
+}
+
+tr:nth-child(even)>td:nth-child(even) {
+	background: chocolate;
+}
+
+tr:nth-child(odd)>td:nth-child(odd) {
+	background: chocolate;
+}
+
+input {
+	margin: auto;
+	max-width: 510px;
+}
+
+div {
+	text-align: center;
+}
+
+img {
+	width:200px;
+	height:200px;
+}
