@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% include "bootstrap.html" %}
+		{% load static %}
+    <style>
+			img {width: 1000px; height:auto;}
+      .btn-primary {background-color: #87ae73; border-color: #87ae73}
+			.btn-primary:hover {background-color: #689053; border-color: #689053}
+			.center {display: block; margin-left: auto; margin-right: auto; width: 80%}
+		</style>
+    <img class=center src ="{% static 'banner2.jpg' %}" alt="Books-for-you Banner">
+  </head>
+  <body>
+    {% include "navigation.html" %}
+    <div class="container">
+      <div class = "jumbotron">
+        <h1>Sort Books</h1>
+        <form method="POST">
+          {% csrf_token %}
+          <h2> Likes </h2>
+            <div class="form-group">
+                <label>Genres</label>
+                {{ sort_form.genresL }}
+            </div>
+            <div class="form-group">
+                <label>Tropes</label>
+                {{ sort_form.tropesL }}
+            </div>
+          <h2> Dislikes </h2>
+            <div class="form-group">
+                <label>Genres</label>
+                {{ sort_form.genresD }}
+            </div>
+            <div class="form-group">
+                <label>Tropes</label>
+                {{ sort_form.tropesD }}
+            </div>
+          <table>
+            <tr>
+              <a href="/ " class="btn btn-secondary">Cancel</a>
+              <td></td>
+              <form method="POST">
+                {% csrf_token %}
+                <input type="submit" class="btn btn-primary" value = "Sort"/>
+              </form>
+            </tr>
+            <tr><td></td></tr>
+            <tr><td><a href="tropes"><font size=-1>Click here if you want to learn more about these Tropes.</font></a></td></tr>
+          </table>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

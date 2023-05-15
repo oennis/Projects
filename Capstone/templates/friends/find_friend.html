@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Bootstrap -->
+		{% include "bootstrap.html" %}
+		{% load static %}
+		<style>
+			img {width: 1000px; height:auto;}
+			body {padding: 30px; margin: auto;}
+			.btn-primary {background-color: #87ae73; border-color: #87ae73}
+			.btn-primary:hover {background-color: #689053; border-color: #689053}
+			.center {display: block; margin-left: auto; margin-right: auto; width: 80%}
+		</style>
+		<img class=center src ="{% static 'banner2.jpg' %}" alt="Books-for-you Banner">
+	</head>
+	<body>
+		{% include "navigation.html" %}
+		<hr>
+		<h4>Friend Requests</h4>
+		<hr>
+		<table class='table table-bordered'>
+			{% if not all_friend_requests %}
+			<tr> <td> No friend requests to display. </td> </tr>
+			{% else %}
+			{% for friend_request in all_friend_requests %}
+			<tr>
+				<td>{{friend_request.sender}}</td>
+				<td> <a href='/accept_friend_request/{{friend_request.id}}/'> <button class='btn btn-primary'> Accept friend request </button> </a> </td>
+			</tr>
+			{% endfor %}
+			{% endif %}
+		</table>
+		<hr>
+		<h4>Find a New Friend</h4>
+		<hr>
+		<table class="table table-bordered">
+			{% for user in allusers %}
+			{% if not user.is_superuser %}
+			{% if user not in request.user.friends.all and user != request.user %}
+			<tr>
+				<td> {{user}} </td>
+				<td> <a href="/send_friend_request/{{user.id}}/"> <button class='btn btn-primary'> Send friend request </button> </a> </td>
+			</tr>
+			{% endif %}
+			{% endif %}
+			{% endfor %}
+		</table>
+		<a href='friends'>
+      <button class="btn btn-primary"> Exit to Friends List </button>
+    </a>
+	</body>
+</html>
