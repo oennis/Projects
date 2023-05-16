@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<!--Main Page for application it displays books-->
+<html>
+	<head>
+		<!-- Bootstrap -->
+		{% include "bootstrap.html" %}
+		{% load static %}
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<!--Main CSS file not used because of errors with banner-->
+		<style>
+			img {width: 1000px; height:auto;}
+		 	body {padding: 30px; margin: auto;}
+			.btn-primary {background-color: #87ae73; border-color: #87ae73}
+			.btn-primary:hover {background-color: #689053; border-color: #689053}
+			.center {display: block; margin-left: auto; margin-right: auto; width: 80%}
+			.checked {color: orange !important}
+			.fa-star {color: grey}
+		</style>
+		<img class=center src ="{% static 'banner2.jpg' %}" alt="Books-for-you Banner">
+	</head>
+	<body>
+		{% include "navigation.html" %}
+		<hr>
+		<h4>Sort Books</h4>
+		<hr>
+		<table class='table'>
+		{% if not genresL %}
+			<tr>
+			<a href='sort'>
+      	<button class="btn btn-primary"> Get Sorting! </button>
+    	</a>
+			{% if user.is_superuser %}
+				<a href='add_book'>
+      		<button class="btn btn-primary"> Add Book </button>
+    		</a>
+			{% endif %}
+			</tr>
+		{% else %}
+			<tr>
+			<a href='/ '>
+				<button class="btn btn-secondary"> Clear Previous Sort </button>
+			</a>
+			{% if user.is_superuser %}
+				<a href='add_book'>
+					<button class="btn btn-primary"> Add Book </button>
+				</a>
+			{% endif %}
+			</tr>
+		{% endif %}
+		</table>
+		{% if not book_obj %}
+			</p>There are no books to display.</p>
+		{% else %}
+			<table class='table table-hover'>
+				<tr><th>Title</th><th>Author</th><th>Description</th><th>Genres</th><th>Tropes</th><th>Favorite</th><th>Rate</th></tr>
+				{% for book in book_obj %}
+					<tr>
+						<td> {{book.title}} </td>
+						<td> {{book.author}}</td>
+						<td> {{book.description}} </td>
+						<!--Doesn't print when null listed in the books-->
+						{% if book.genre1 == "NULL" %}
+						{% else %}
+						<td> {{book.genre1}}{% endif %}{% if book.genre2 == "NULL" %}{% else %}, {{book.genre2}}{% endif %}{% if book.genre3 == "NULL" %}{% else %}, {{book.genre3}}{% endif %}</td>
+						{% if book.trope1 == "NULL" %}
+						{% else %}
+						<td> {{book.trope1}}{% endif %}{% if book.trope2 == "NULL" %}{% else %}, {{book.trope2}}{% endif %}{% if book.trope3 == "NULL" %}{% else %}, {{book.trope3}}{% endif %}</td>
+						<!--Checks if book is in favorites in order to display the correct button-->
+						{% if not favorites %}
+							<td> <a href='favorite/{{book.title}}'> <button class="btn btn-secondary center"> &hearts; </button> </a> </td>
+						{% else %}
+							<td> <a href='{% for favorite in favorites %}{% if favorite.title == book.title %} remove_favorite/{{book.title}} {% else %} favorite/{{book.title}} {% endif %}{% endfor %}'> <button class="btn {% for favorite in favorites %}{% if favorite.title == book.title %} btn-danger {% else %} btn-secondary {% endif %} center {% endfor %}"> &hearts; </button> </a></td>
+						{% endif %}
+						<!--Displays ratings stars if user has no ratings-->
+						{% if not ratings %}
+						<td> <ul class="btn btn-light inline-block rating-list">
+							<a href="rating/{{book.id}}/5"> <span class="fa fa-star text-secondary" style="color:black" title="Rate 5"></span></a>
+							<a href="rating/{{book.id}}/4"> <span class="fa fa-star text-secondary" style="color:black" title="Rate 4"></span></a>
+							<a href="rating/{{book.id}}/3"> <span class="fa fa-star text-secondary" style="color:black" title="Rate 3"></span></a>
+							<a href="rating/{{book.id}}/2"> <span class="fa fa-star text-secondary" style="color:black" title="Rate 2"></span></a>
+							<a href="rating/{{book.id}}/1"> <span class="fa fa-star text-secondary" style="color:black" title="Rate 1"></span></a>
+						</ul> </td>
+							<!--Displays ratings stars-->
+						{% else %}
+								<td> <ul class="btn btn-light inline-block rating-list">
+									<a href="rating/{{book.id}}/5"> <span class="fa fa-star {% for rating in ratings %}{% if rating.book == book %}{% if rating.rating > 4 %} checked {% else %} text-secondary {% endif %}{% endif %}{% endfor %}" title="Rate 5"></span></a>
+									<a href="rating/{{book.id}}/4"> <span class="fa fa-star {% for rating in ratings %}{% if rating.book == book %}{% if rating.rating > 3 %} checked {% else %} text-secondary {% endif %}{% endif %}{% endfor %}" title="Rate 4"></span></a>
+									<a href="rating/{{book.id}}/3"> <span class="fa fa-star {% for rating in ratings %}{% if rating.book == book %}{% if rating.rating > 2 %} checked {% else %} text-secondary {% endif %}{% endif %}{% endfor %}" title="Rate 3"></span></a>
+									<a href="rating/{{book.id}}/2"> <span class="fa fa-star {% for rating in ratings %}{% if rating.book == book %}{% if rating.rating > 1 %} checked {% else %} text-secondary {% endif %}{% endif %}{% endfor %}" title="Rate 2"></span></a>
+									<a href="rating/{{book.id}}/1"> <span class="fa fa-star {% for rating in ratings %}{% if rating.book == book %}{% if rating.rating > 0 %} checked {% else %} text-secondary {% endif %}{% endif %}{% endfor %}" title="Rate 1"></span></a>
+								</ul> </td>
+						{% endif %}
+					</tr>
+				{% endfor %}
+			</table>
+		{% endif %}
+	</body>
+</html>

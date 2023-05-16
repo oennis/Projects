@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!--Page to view friends favorites-->
+<html>
+	<head>
+		<!-- Bootstrap -->
+		{% include "bootstrap.html" %}
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		{% load static %}
+		<!--Main CSS file not used because of errors with banner-->
+		<style>
+			img {width: 1000px; height:auto;}
+			body {padding: 30px; margin: auto;}
+			.btn-primary {background-color: #87ae73; border-color: #87ae73}
+			.btn-primary:hover {background-color: #689053; border-color: #689053}
+			.center {display: block; margin-left: auto; margin-right: auto; width: 80%}
+			.checked {color: orange !important}
+			.fa-star {color: grey}
+		</style>
+		<img class=center src ="{% static 'banner2.jpg' %}" alt="Books-for-you Banner">
+	</head>
+	<body>
+		{% include "navigation.html" %}
+		<hr>
+		<h4>{{friend}}'s Favorite Books</h4>
+		<hr>
+		<table class='table table-hover'>
+      {% if not favorites %}
+        <p> They have no favorites to display.</p>
+      {% else %}
+				<tr><th>Title</th><th>Author</th><th>Description</th><th>Genres</th><th>Tropes</th><th>Their Rating</th></tr>
+        {% for favorite in favorites %}
+			    <tr>
+            <td> {{favorite.title}} </td>
+            <td> {{favorite.author}}</td>
+            <td> {{favorite.description}} </td>
+						<!--Doesn't print when null listed in the books-->
+  					{% if favorite.genre1 == "NULL" %}
+  					{% else %}
+  					<td> {{favorite.genre1}}{% endif %}{% if favorite.genre2 == "NULL" %}{% else %}, {{favorite.genre2}}{% endif %}{% if favorite.genre3 == "NULL" %}{% else %}, {{favorite.genre3}}{% endif %}</td>
+  					{% if favorite.trope1 == "NULL" %}
+  					{% else %}
+  					<td> {{favorite.trope1}}{% endif %}{% if favorite.trope2 == "NULL" %}{% else %}, {{favorite.trope2}}{% endif %}{% if favorite.trope3 == "NULL" %}{% else %}, {{favorite.trope3}}{% endif %}</td>
+						{% if not ratings %}
+						<td> <ul class="btn btn-light inline-block rating-list">
+							<span class="fa fa-star text-secondary" title="Rate 5"></span></a>
+							<span class="fa fa-star text-secondary" title="Rate 4"></span></a>
+							<span class="fa fa-star text-secondary" title="Rate 3"></span></a>
+							<span class="fa fa-star text-secondary" title="Rate 2"></span></a>
+							<span class="fa fa-star text-secondary" title="Rate 1"></span></a>
+						</ul> </td>
+						{% else %}
+								<td> <ul class="btn btn-light inline-block rating-list">
+									<span class="fa fa-star {% for rating in ratings %}{% if rating.book == favorite %}{% if rating.rating > 4 %} checked {% else %} text-secondary {% endif %}{% endif %}{% endfor %}" title="Rate 5"></span></a>
+									<span class="fa fa-star {% for rating in ratings %}{% if rating.book == favorite %}{% if rating.rating > 3 %} checked {% else %} text-secondary {% endif %}{% endif %}{% endfor %}" title="Rate 4"></span></a>
+									<span class="fa fa-star {% for rating in ratings %}{% if rating.book == favorite %}{% if rating.rating > 2 %} checked {% else %} text-secondary {% endif %}{% endif %}{% endfor %}" title="Rate 3"></span></a>
+									<span class="fa fa-star {% for rating in ratings %}{% if rating.book == favorite %}{% if rating.rating > 1 %} checked {% else %} text-secondary {% endif %}{% endif %}{% endfor %}" title="Rate 2"></span></a>
+									<span class="fa fa-star {% for rating in ratings %}{% if rating.book == favorite %}{% if rating.rating > 0 %} checked {% else %} text-secondary {% endif %}{% endif %}{% endfor %}" title="Rate 1"></span></a>
+								</ul> </td>
+						{% endif %}
+					</tr>
+			{% endfor %}
+			{% endif %}
+		</table>
+	</body>
+</html>

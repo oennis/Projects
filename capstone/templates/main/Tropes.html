@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--Page displays definitions of all tropes-->
+<html>
+	<head>
+		{% include "bootstrap.html" %}
+		{% load static %}
+		<!--Main CSS file not used because of errors with banner-->
+		<style>
+			img {width: 1000px; height:auto;}
+			body {padding: 30px; margin: auto;}
+			.btn-primary {background-color: #87ae73; border-color: #87ae73}
+			.btn-primary:hover {background-color: #689053; border-color: #689053}
+			.center {display: block; margin-left: auto; margin-right: auto; width: 80%}
+			.tab {display: inline-block; margin-left: 40px}
+		</style>
+    <img class=center src ="{% static 'banner2.jpg' %}" alt="Books-for-you Banner">
+	</head>
+	<body>
+		{% include "navigation.html" %}
+		<hr>
+		<h4>Trope Definitions</h4>
+		<hr>
+		<b> What is The Chosen One? </b>
+		<p> One character, usually the protagonist, is framed as the inevitable hero or antihero of the story, as a result of destiny, unique gifts, and/or special lineage. <b>Ex:</b> Harry Potter</p>
+
+		<b> What is a Love Triangle? </b>
+		<p> A scenario or circumstance, usually depicted as a rivalry, in which two people are pursuing or involved in a romantic relationship with one person, or in which one person in a romantic relationship with someone is simultaneously pursuing or involved in a romantic relationship with someone else.</p>
+
+		<b> What is Friends to Lovers? </b>
+		<p> The main characters start as friends, but something in the story happens to make them fall in love. </p>
+
+		<b> What is Enemies to Lovers? </b>
+		<p> The main characters start as enemies or rivals, but something in the story happens to make them fall in love. </p>
+
+		<b> What is Love at First Sight? </b>
+		<p> Two characters meet, and fall deeply, madly, passionately in love with each other almost immediately.</p>
+
+		<b> What is Major Character Death? </b>
+		<p> The main character or a character of significant value to the reader is killed. </p>
+
+		<b> What is an Arranged Marriage? </b>
+		<p> Two characters marry one another, without actively choosing to marry each other. Instead, others make the selection and arrange the date and any other conditions that might apply to them. </p>
+
+		<b> What is a Slow Burn? </b>
+		<p> When the romantic attraction between characters builds slowly over the course of a novel or series. </p>
+
+		<b> What is Found Family? </b>
+		<p> A group of characters finds themselves united in a family bond based on shared experiences, mutual understanding, and interpersonal connection. </p>
+
+		<b> What is a Happy Ending? </b>
+		<p> The story ends with major problems being resolved and the main protagonist being content with the current state of things. Sometimes referred to as “happily ever after”. </p>
+
+		<b> What is Pregnancy? </b>
+		<p> The main character becomes pregnant, whether it be accidentally or intentionally. This can occur with the character’s romantic partner or a person they are not in a relationship with. </p>
+
+		<b> What is Second Chance? </b>
+		<p> Former lovers reconnect after a breakup or separation and finally find their happy ending. </p>
+		<hr>
+		<a href='sort'>
+			<button class="btn btn-primary"> Get back to Sorting! </button>
+		</a>
+		<a href='FAQ'>
+      <button class="btn btn-secondary"> To FAQ </button>
+    </a>
+		<hr>
+	</body>
+</html>

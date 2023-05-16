@@ -1,0 +1,29 @@
+<!--Informs user if they have sent a friend request previously-->
+<html>
+  <head>
+    {% include "bootstrap.html" %}
+    {% load static %}
+    <!--Main CSS file not used because of errors with banner-->
+    <style>
+			img {width: 1000px; height:auto;}
+		 	body {padding: 30px; margin: auto;}
+			.btn-primary {background-color: #87ae73; border-color: #87ae73}
+			.btn-primary:hover {background-color: #689053; border-color: #689053}
+			.center {display: block; margin-left: auto; margin-right: auto; width: 80%}
+		</style>
+		<img class=center src ="{% static 'banner2.jpg' %}" alt="Books-for-you Banner">
+  </head>
+  <body>
+    {% include "navigation.html" %}
+    <div class="container">
+      <div class = "jumbotron">
+        {% if bool == True %}
+          <h2>Friend Request was already Sent.</h2>
+        {% else %}
+          <h2>Friend Request Sent.</h2>
+        {% endif %}
+        <a href="/find_friend" class="btn btn-secondary">Back to Find a Friend</a>
+      </div>
+    </div>
+  </body>
+</html>
